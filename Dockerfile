@@ -49,7 +49,6 @@ RUN set -ex && \
     ./autogen.sh && \
     ./configure && make && \
     make install && \
-    
     runDeps="$( \
         scanelf --needed --nobanner /usr/bin/ss-* \
             | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
@@ -60,11 +59,8 @@ RUN set -ex && \
     apk del .build-deps && \
     rm -rf /tmp/* \
     && apk del TMP
-
 USER nobody
-
 EXPOSE $SERVER_PORT/tcp $SERVER_PORT/udp
-
 CMD ss-server -s $SERVER_ADDR \
               -p $SERVER_PORT \
               -k ${PASSWORD:-$(hostname)} \
