@@ -18,15 +18,21 @@ $ docker --version
 ## Build docker image
 
 ```bash
-$ curl -sSL https://github.com/allen0125/shadowsocks-obfs-docker/blob/master/Dockerfile | docker build -t shadowsocks
+$ git clone https://github.com/allen0125/shadowsocks-obfs-docker.git
+$ cd shadowsocks-obfs-docker
+$ docker build -t shadowsocks .
 $ docker images
 ```
+## Edit the password in docker-compose.yml
 
+```bash
+$ vim docker-compose.yml
+```
 
 ## Run docker container
 
 ```bash
-$ docker run -d -e METHOD=aes-256-cfb -e PASSWORD=9MLSpPmNt -p 8388:8388 --restart always shadowsocks
+$ docker-compose start shadowsocks
 $ docker ps
 ```
 
