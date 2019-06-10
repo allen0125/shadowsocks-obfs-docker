@@ -32,7 +32,7 @@ $ vim docker-compose.yml
 ## Run docker container
 
 ```bash
-$ docker-compose start shadowsocks
+$ docker-compose up -d
 $ docker ps
 ```
 
